@@ -1,6 +1,6 @@
-import counterReducer from "./counterReducer";
+import userDetailsReducer from "./userDetailsReducer";
 import { combineReducers } from "redux";
 
 export default combineReducers({
-  counter: counterReducer
+  gitapi: userDetailsReducer
 });

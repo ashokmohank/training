@@ -7,14 +7,17 @@ import combineReducers from "./reducers/combinedReducers";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 import loggingMW from "./middlewares/loggingMW";
-const spmDiv = document.getElementById("app");
+
 //calling middleware
 //const appStore = createStore(combineReducers, applyMiddleware(loggingMW));
+
 //composeWithDevTools for dev purpose to inspect state
 const appStore = createStore(
   combineReducers,
   composeWithDevTools(applyMiddleware(loggingMW))
 );
+
+const spmDiv = document.getElementById("app");
 
 ReactDOM.render(
   <Provider store={appStore}>
@@ -22,3 +25,20 @@ ReactDOM.render(
   </Provider>,
   spmDiv
 );
+
+/*
+Store : {
+  isFetching : false,
+  userDetails : {},
+  error : ""
+}
+
+Actions:
+{type: "FETCH_USER_DETAILS" ,url: ""}
+
+{type:"IS_FETCHING"}
+
+{type:"FETCH_SUCCESS", userDetails:{}}
+
+{type:"FETCH_ERROR", error:""}
+*/

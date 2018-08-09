@@ -1,28 +1,20 @@
 import React from "react";
-import { connect } from "react-redux";
 
 class Form extends React.Component {
   render() {
     return (
       <form>
         <input
-          type="button"
-          value="Increment"
-          onClick={() => {
-            this.props.incrementHandle();
+          type="text"
+          defaultValue="https://api.github.com/users/ashokmohank"
+          ref={node => {
+            this.textbox = node;
           }}
         />{" "}
-        <input
-          type="button"
-          value="Decrement"
-          onClick={() => {
-            this.props.decrementHandle();
-          }}
-        />
+        <input type="button" value="Fetch" />
       </form>
     );
   }
 }
 
-const FormContainer = connect()(Form);
-export default FormContainer;
+export default Form;

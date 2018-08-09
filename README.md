@@ -35,7 +35,7 @@ Javascript XML Follows the rules of XML
 - attribute values other than string can be passed as expressions (Ecample: <Hello val={100}>)
 - html attribute names must be camel case (example: class as className, onclick as onClick)
   #JSX Expression
-- IF and FOR cannot be used inside the JSX (<Hello>{ no if or for loop }<//Hello>). However, conditional expression(?:) is allowed.
+- _IF and FOR cannot be used inside the JSX (<Hello>{ no if or for loop }<//Hello>). However, conditional expression(?:) is allowed._
 
 ## Styling
 
@@ -193,7 +193,7 @@ _Development Steps_
 3.  Convert Static HTML to React Static page
 4.  Design a Redux Store and Actions
 5.  Create Reducers
-6.  Create Store(inititalize)
+6.  Create Store(inititalize), then test with Redux dev tools
 7.  Create Actions creators
 8.  Dispatch Actions from View
 9.  Binding (subscribe) View to Store changes
