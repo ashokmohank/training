@@ -8,10 +8,16 @@ class Form extends React.Component {
           type="text"
           defaultValue="https://api.github.com/users/ashokmohank"
           ref={node => {
-            this.textbox = node;
+            this.textBox = node;
           }}
         />{" "}
-        <input type="button" value="Fetch" />
+        <input
+          type="button"
+          value="Fetch"
+          onClick={() => {
+            this.props.fetchHandler(this.textBox.value);
+          }}
+        />
       </form>
     );
   }

@@ -267,3 +267,15 @@ applyMiddleware is used to bind middleware.
 > Refer 9_Middleware
 
 ## Integrating API
+
+> Refer 10_Middleware
+
+To handle async in redux, use redux-thunk
+
+> npm install redux-thunk --save
+
+> npm install axios --save
+
+1.  axios is used to hit the api to get response data
+2.  userDetailsAction gets just url as parameter and returns a plain object ({type:"IS_FETCHING"}).
+3.  On applying redux-thunk as middleware, the userDetailsAction becomes capable of handling async callbacks that could return function with two parametersi.e (dipatch, state)

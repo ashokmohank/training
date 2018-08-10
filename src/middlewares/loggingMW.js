@@ -1,4 +1,4 @@
-export default function logginMW(store) {
+export default function loggingMW(store) {
   return next => {
     return action => {
       console.log("before action");

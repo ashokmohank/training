@@ -4,8 +4,9 @@ import App from "./components/App";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import combineReducers from "./reducers/combinedReducers";
-
+import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
+//import logger from 'redux-logger';
 import loggingMW from "./middlewares/loggingMW";
 
 //calling middleware
@@ -14,7 +15,7 @@ import loggingMW from "./middlewares/loggingMW";
 //composeWithDevTools for dev purpose to inspect state
 const appStore = createStore(
   combineReducers,
-  composeWithDevTools(applyMiddleware(loggingMW))
+  composeWithDevTools(applyMiddleware(thunk, loggingMW))
 );
 
 const spmDiv = document.getElementById("app");
