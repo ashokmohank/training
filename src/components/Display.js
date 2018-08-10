@@ -1,35 +1,36 @@
 import React from "react";
+import ToDoItem from "./ToDoItem";
 
 class Display extends React.Component {
   render() {
-    let isFetchingJsx = "";
-    let userDetailsJsx = "";
-    let errorJsx = "";
+    let toDoItems = this.props.items;
+    let toDoJsx = "";
 
-    if (this.props.isFetching) {
-      isFetchingJsx = (
-        <h1 style={{ color: "blue" }}>Please wait until details are fetched</h1>
-      );
-    }
-
-    if (this.props.error) {
-      errorJsx = <h1 style={{ color: "red" }}>{this.props.error}</h1>;
-    }
-
-    if (this.props.userDetails.name) {
-      userDetailsJsx = (
-        <ul>
-          <li>Name: {this.props.userDetails.name}</li>
-          <li>Company: {this.props.userDetails.company}</li>
-          <li>Location: {this.props.userDetails.location}</li>
-        </ul>
-      );
+    if (toDoItems) {
+      toDoJsx = toDoItems.map((toDoItem, idx) => {
+        let visibleProp = "block";
+        if (this.props.filter === "COMPLETE" && toDoItem.isComplete !== true) {
+          visibleProp = "none";
+        } else if (
+          this.props.filter === "ACTIVE" &&
+          toDoItem.isComplete !== false
+        ) {
+          visibleProp = "none";
+        }
+        return (
+          <ToDoItem
+            key={toDoItem.id}
+            isComplete={toDoItem.isComplete}
+            text={toDoItem.text}
+            toggleHandler={this.props.toggleHandler}
+            filter={visibleProp}
+          />
+        );
+      });
     }
     return (
       <div>
-        {isFetchingJsx}
-        {userDetailsJsx}
-        {errorJsx}
+        <ul>{toDoJsx}</ul>
       </div>
     );
   }

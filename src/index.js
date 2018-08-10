@@ -28,18 +28,22 @@ ReactDOM.render(
 );
 
 /*
-Store : {
-  isFetching : false,
-  userDetails : {},
-  error : ""
+Store : 
+{
+  items: [
+    {id:1 , text : "todo-1", isComplete : true},
+    {id:2 , text : "todo-2", isComplete : true},
+    {id:3 , text : "todo-3", isComplete : true},
+    
+  ],
+  filter : "ALL"
 }
 
 Actions:
-{type: "FETCH_USER_DETAILS" ,url: ""}
+{type: "ADD_TODO" , task: "Learn Go"}
+{type:"TOGGLE_TODO", id: 1}
 
-{type:"IS_FETCHING"}
-
-{type:"FETCH_SUCCESS", userDetails:{}}
-
-{type:"FETCH_ERROR", error:""}
+{type:"FILTER" ,  filter: "ALL"}
+{type:"FILTER" ,  filter: "ACTIVE"}
+{type:"FILTER" ,  filter: "COMPLETE"}
 */

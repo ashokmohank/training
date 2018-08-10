@@ -1,11 +1,11 @@
-import { userDetailsAction } from "../actions/userDetailsAction";
+import { addToDoAction } from "../actions/toDoAction";
 import { connect } from "react-redux";
 import Form from "../components/Form";
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    fetchHandler: url => {
-      dispatch(userDetailsAction(url));
+    addHandler: task => {
+      dispatch(addToDoAction(task));
     }
   };
 }

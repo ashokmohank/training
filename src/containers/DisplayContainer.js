@@ -1,14 +1,25 @@
 import Display from "../components/Display";
 import { connect } from "react-redux";
+import { toggleToDoAction } from "../actions/toDoAction";
 
 function mapStateToProps(state, ownProps) {
   return {
-    isFetching: state.gitapi.isFetching,
-    userDetails: state.gitapi.userDetails,
-    error: state.gitapi.error
+    items: state.items,
+    filter: state.filter
   };
 }
 
-const DisplayContainer = connect(mapStateToProps)(Display);
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    toggleHandler: id => {
+      dispatch(toggleToDoAction(id));
+    }
+  };
+}
+
+const DisplayContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Display);
 
 export default DisplayContainer;

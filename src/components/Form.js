@@ -6,16 +6,16 @@ class Form extends React.Component {
       <form>
         <input
           type="text"
-          defaultValue="https://api.github.com/users/ashokmohank"
+          placeholder="to do item"
           ref={node => {
             this.textBox = node;
           }}
         />{" "}
         <input
           type="button"
-          value="Fetch"
+          value="Add To Do"
           onClick={() => {
-            this.props.fetchHandler(this.textBox.value);
+            this.props.addHandler(this.textBox.value);
           }}
         />
       </form>

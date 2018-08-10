@@ -1,6 +1,8 @@
-import userDetailsReducer from "./userDetailsReducer";
 import { combineReducers } from "redux";
+import addToDoReducer from "./addToDoReducer";
+import filterReducer from "./filterReducer";
 
 export default combineReducers({
-  gitapi: userDetailsReducer
+  items: addToDoReducer,
+  filter: filterReducer
 });

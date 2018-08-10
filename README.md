@@ -22,6 +22,8 @@ Recreate public/index.html and src/index.js
 - [react-redux](#react-redux)
 - [Middleware](#middleware)
 - [Integrating API](#integrating-api)
+- [Webpack](#webpack)
+- [Unit testing](#unit-testing)
 
 ## JSX
 
@@ -279,3 +281,68 @@ To handle async in redux, use redux-thunk
 1.  axios is used to hit the api to get response data
 2.  userDetailsAction gets just url as parameter and returns a plain object ({type:"IS_FETCHING"}).
 3.  On applying redux-thunk as middleware, the userDetailsAction becomes capable of handling async callbacks that could return function with two parametersi.e (dipatch, state)
+
+## Webpack
+
+_Why ?_
+
+1.  Automatic browser launch
+2.  files hosted on Web server
+3.  hot reload
+4.  JS & CSS bundles are created on build
+5.  merged multiple CSS and JS into single files
+6.  added link of bundle css/js to index.html
+7.  minification
+8.  Able to import CSS inside JS
+9.  Babel transpilation
+
+> npm install webpack save-dev
+
+1.  in package.json add a 'bulid' inside script object.
+
+- two params, one the root path of source and other the destination of bundle
+
+  > script: "webpack src/index.js public/index.js"
+
+2.  Configuration can be maintained as js
+    webpack.config.js
+    This file should be in the root path (that is same as package.json path)
+    if this config file is avalable, just configure package.json with script:{"build": "webpack"}
+    Refer : https://webpack.js.org/configuration/
+
+- entry
+- output
+- module - rules:[test (regex of what to include) , exlude (directory), use : {loader: (like babel)}]
+
+> Refer: repo:\basic\ReactJS_Training_Material\12_Package_and_Build\01_Webpack
+
+3.  for react add bable.rc / option with [react] in additon to bable presets [es2015]
+4.  hot reload - use watch option
+5.  Webpack dev server by adding 'devServer' option
+    refer basic\ReactJS_Training_Material\12_Package_and_Build\01_Webpack\050_LiveReloading\Code\webpack2
+6.  For loading css into JS and hot css reloadiong, add loader in config like 'css-loader' and 'style-loader' respectively. Good for development mode, so use ExtractTextPlugin for building a prod.
+7.  Hot module replacement, preserves the state whereas hot reloading the state is lost
+    devServer: {
+    contentBase: path.join(\_\_dirname, 'public'),
+    compress: true,
+    port: 8080,
+    open: true,
+    hot: true
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin()]
+
+this has to be added in index.js and helps in debugging
+if (module.hot) {
+module.hot.accept();
+}
+
+8.  always deploy 'source-map' helps in debugging
+    > browser setting->enable javascript sourcemap and reload browser
+
+## Unit testing
+
+- Jest, both test runner and assersion
+- test library : react-test-renderer and Enzyme
+  \_\_tests\_\_ directory or .spect.js or .test.js
+- TTD is not possible
+- regression testing is achieved through snapshot testing that is supported by jest

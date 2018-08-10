@@ -1,0 +1,17 @@
+.inactivetask {
+  text-decoration: line-through;
+}
+
+.activetask {
+  text-decoration: none;
+}
+
+.inactivefilter {
+  text-decoration: underline;
+  text-decoration-color: blue;
+  font-style: blue;
+}
+
+.activefilter {
+  text-decoration: none;
+}
